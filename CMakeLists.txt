@@ -1,10 +1,12 @@
-cmake_minimum_required(VERSION 2.6)
-project(xppaut)
+cmake_minimum_required(VERSION 2.8)
+
+project(xppaut LANGUAGES C)
 
 set (CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/extra)
 
-set (xppaut_VERSION_MAJOR 8)
-set (xppaut_VERSION_MINOR 0)
+set (xppaut_VERSION_MAJOR 6)
+set (xppaut_VERSION_MINOR 11)
+set (CMAKE_C_COMPILER ${CMAKE_CXX_COMPILER})
 
 set(CMAKE_BUILD_TYPE RELEASE)
 set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -g -D_XOPEN_SOURCE=600 -std=c99  -DNOERRNO -DNON_UNIX_STDIO -DAUTO -DCVODE_YES -DHAVEDLL")
@@ -18,6 +20,7 @@ configure_file (
 include_directories("${PROJECT_BINARY_DIR}")
 
 find_package(X11 REQUIRED)
+
 #find_package(SUNDIALS REQUIRED)
 #cannot use system library unti a static library is available
 #find_package(F2C REQUIRED)
