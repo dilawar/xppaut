@@ -34,7 +34,7 @@ void restore_nullclines(void);
 void dump_clines(FILE *fp, float *x, int nx, float *y, int ny);
 void dump_clines_old(FILE *fp, float *x, int nx, float *y, int ny);
 void restor_null(float *v, int n, int d);
-void new_clines_com(int c);
+void new_clines_com(const unsigned c);
 void new_nullcline(int course, double xlo, double ylo, double xhi, double yhi, float *stor, int *npts);
 void stor_null(double x1, double y1, double x2, double y2);
 float fnull(double x, double y);

@@ -492,7 +492,7 @@ if(XPPBatch){
      set_colorization_stuff();
 
     batch_integrate();
-    silent_nullclines();
+    do_batch_nclines( );
     silent_dfields();
     exit(0);
   }

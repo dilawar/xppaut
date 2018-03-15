@@ -113,8 +113,7 @@ void silent_nullclines()
 {
     FILE *fp;
 
-    // If NCBatch is not set to 2, return and do not write.
-    if(NCBatch!=2)
+    if(NCBatch != 2)
         return;
 
     NCSuppress=1;
@@ -440,7 +439,15 @@ void do_batch_nclines()
     if(!NCBatch)return;
     if(NCBatch==1)
     {
-        new_clines_com(0);
+        new_clines_com( 0 );
+        FILE* fp=fopen("nullclines.dat","w");
+        if(fp==NULL)
+        {
+            plintf("Cannot open nullcline file\n");
+            return;
+        }
+        dump_clines(fp,X_n,num_x_n,Y_n,num_y_n);
+        fclose(fp);
         return;
     }
 
@@ -621,7 +628,6 @@ void direct_field_com(int c)
 
 
     int grid=DF_GRID;
-
 
     if(MyGraph->TimeFlag||MyGraph->xv[0]==MyGraph->yv[0]||MyGraph->ThreeDFlag)
         return;
@@ -906,13 +912,19 @@ void create_new_cline()
         new_clines_com(0);
 }
 
-void new_clines_com(int c)
+void new_clines_com(const unsigned c)
 {
     int course=NMESH,i;
     float xmin,xmax,y_tp,y_bot;
     int col1=XNullColor,col2=YNullColor;
 
-    if(MyGraph->ThreeDFlag||MyGraph->TimeFlag||MyGraph->xv[0]==MyGraph->yv[0])return;
+    if(MyGraph->ThreeDFlag||MyGraph->TimeFlag||MyGraph->xv[0]==MyGraph->yv[0])
+    {
+        printf( "Debug: Will not generate nullcline. ThreeDFlag(%d)|TimeFlag(%d)|xv[0](%d)==yv[0](%d)\n"
+                , MyGraph->ThreeDFlag, MyGraph->TimeFlag, MyGraph->xv[0], MyGraph->yv[0] 
+                );
+        return;
+    }
 
     if(c==1)
     {
@@ -941,7 +953,9 @@ void new_clines_com(int c)
     }
     if(c==0)
     {
+        printf( "Debug: Generating nullcline\n" );
         for(i=NODE; i<NODE+NMarkov; i++)set_ivar(i+1+FIX_VAR,last_ic[i]);
+
         xmin=(float)MyGraph->xmin;
         xmax=(float)MyGraph->xmax;
         y_tp=(float)MyGraph->ymax;
@@ -981,8 +995,8 @@ void new_clines_com(int c)
         if(!NCSuppress)set_linestyle(col2);
         new_nullcline(course,xmin,y_bot,xmax,y_tp,Y_n,&num_y_n);
         ping();
-
     }
+
 }
 
 

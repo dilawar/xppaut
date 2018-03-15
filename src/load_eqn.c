@@ -2863,7 +2863,6 @@ OptionsSet *mask;
         if ((notAlreadySet.NCBATCH||force)|| ((mask!=NULL)&&(mask->NCBATCH==1)))
         {
             NCBatch=atoi(s2);
-            printf( "Debug: NCDRAW is set %d. Writing nullcline\n", NCBatch );
             notAlreadySet.NCBATCH=0;
         }
         return;
