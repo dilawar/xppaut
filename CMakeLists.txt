@@ -10,6 +10,7 @@ set (xppaut_VERSION_MINOR 0)
 set(CMAKE_BUILD_TYPE Release)
 add_definitions( -D_XOPEN_SOURCE=600 )
 add_definitions( -DNOERRNO -DNON_UNIX_STDIO -DAUTO -DCVODE_YES -DHAVEDLL )
+add_definitions( -Werror=format-security )
 
 # Both are required. Don't know why.
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lm -ldl" )

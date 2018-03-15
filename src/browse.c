@@ -1318,7 +1318,7 @@ BROWSER *b;
  
  double xlo=0,xhi=1;
  int col;
- sprintf(value[0],uvar_names[0]);
+ sprintf(value[0], "%c", uvar_names[0]);
  sprintf(value[1],"0.00");
  sprintf(value[2],"1.00");
  sprintf(value[3],"%s.tab",value[0]);
@@ -1351,7 +1351,7 @@ BROWSER *b;
  
  float val;
 
- sprintf(value[0],uvar_names[0]);
+ sprintf(value[0], "%c", uvar_names[0]);
  sprintf(value[1],"0.00");
  XGetInputFocus(display,&w,&rev);
  status=do_string_box(2,2,1,"Find Data",name,value,40);

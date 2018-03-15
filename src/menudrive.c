@@ -109,7 +109,7 @@ void edit_xpprc()
 	}
 	else
 	{
-		sprintf(editor,ed);
+		sprintf(editor, "%s", ed);
 	}
 	
 	child_pid = fork();

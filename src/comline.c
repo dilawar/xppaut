@@ -306,8 +306,8 @@ int argc;
    }
    if(k==5){
     plintf(argv[i+1]);
-     sprintf(batchout,argv[i+1]);
-     sprintf(UserOUTFILE,argv[i+1]);
+     sprintf(batchout,"%s", argv[i+1]);
+     sprintf(UserOUTFILE, "%s", argv[i+1]);
      i++;
    }
    if(k==6){
@@ -461,7 +461,7 @@ int if_needed_load_ext_options()
       plintf("%s external set not found\n",readsetfile);
       return 0;
     }
-    fgets(myopts,1024,fp);
+    char* c = fgets(myopts,1024,fp);
     sprintf(myoptsx,"$ %s",myopts);
     plintf("Got this string: {%s}\n",myopts);
     extract_action(myoptsx);
