@@ -200,7 +200,7 @@ void add_intern_set(char *name, char *does);
 void extract_action(char *ptr);
 void extract_internset(int j);
 void do_intern_set(char *name1, char *value);
-int msc(char *s1, char *s2);
+int msc(const char *s1, const char *s2);
 void set_internopts(OptionsSet *mask);
 void set_internopts_xpprc_and_comline(void);
 void split_apart(char *bob, char *name, char *value);
