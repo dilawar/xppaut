@@ -11,6 +11,8 @@ target_link_libraries(xppaut
     ${SBML_LIBRARIES}
     ${SUNDIALS_LIBRARIES} 
     ${X11_LIBRARIES}
+    ${CMAKE_DL_LIBS}
+    m
     )
 
 install(TARGETS xppaut DESTINATION bin 
