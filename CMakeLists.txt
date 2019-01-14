@@ -10,7 +10,7 @@ set (xppaut_VERSION_MINOR 0)
 set(CMAKE_BUILD_TYPE Release)
 add_definitions( -D_XOPEN_SOURCE=600 )
 add_definitions( -DNOERRNO -DNON_UNIX_STDIO -DAUTO -DCVODE_YES -DHAVEDLL )
-add_definitions( -Werror=format-security )
+# add_definitions( -Werror=format-security )
 
 configure_file (
     "${PROJECT_SOURCE_DIR}/src/xppautConfig.h.in"
